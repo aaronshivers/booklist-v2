@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useReducer, useContext } from 'react'
 import { Container } from 'react-bootstrap'
+import bookReducer from '../reducers/books'
+import Header from './Header'
+import BookForm from './BookForm'
+import BookList from './BookList'
 
-const App = () => (
-  <div>
-    <Container>
-      <h1 className="display-1 text-center">booklist-v2</h1>
+
+const App = () => {
+  const [ state, dispatch ] = useReducer(reducer, [])
+
+  return (
+    <Container className="mt-4 mb-4">
+      <Header />
+      <BookForm />
+      <BookList books={ books } />
     </Container>
-  </div>
-)
+  )
+}
 
 export default App
