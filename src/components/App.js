@@ -13,7 +13,7 @@ const initialState = [{
 }]
 
 const App = () => {
-  const [ state, dispatch ] = useReducer(booksReducer, initialState)
+  const [ state, dispatch ] = useReducer(booksReducer, [])
 
   return (
     <BooksContext.Provider value={ { state, dispatch } }>

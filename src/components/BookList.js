@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Table } from 'react-bootstrap'
 import BooksContext from '../context/books-context'
+import DeleteButton from './DeleteButton'
 
 const BookList = () => {
   const { state, dispatch } = useContext(BooksContext)
@@ -12,6 +13,7 @@ const BookList = () => {
           <th>Title</th>
           <th>Author</th>
           <th>ISBN #</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +23,9 @@ const BookList = () => {
               <td>{ title }</td>
               <td>{ author }</td>
               <td>{ isbn }</td>
+              <td>
+                <DeleteButton isbn={ isbn } />
+              </td>
             </tr>
           ))
         }
