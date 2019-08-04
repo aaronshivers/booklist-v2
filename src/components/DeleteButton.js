@@ -8,6 +8,7 @@ const BookList = ({ isbn }) => {
   const deleteBook = () => {
     const books = state.filter(book => book.isbn !== isbn)
     console.log(books)
+    localStorage.setItem('booklist', JSON.stringify(books))
 
     dispatch({ type: 'DELETE_BOOK', books })
   }

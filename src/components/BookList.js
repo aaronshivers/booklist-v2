@@ -9,7 +9,7 @@ const BookList = () => {
   // Populate books on page load
   useEffect(() => {
     const books = JSON.parse(localStorage.getItem('booklist'))
-    dispatch({ type: 'POPULATE_BOOKS', books })
+    if (books) dispatch({ type: 'POPULATE_BOOKS', books })
   }, [])
 
   return (
@@ -24,7 +24,7 @@ const BookList = () => {
       </thead>
       <tbody>
         {
-          state.map(({ title, author, isbn }) => (
+          state && state.map(({ title, author, isbn }) => (
             <tr key={ isbn }>
               <td className="align-middle">{ title }</td>
               <td className="align-middle">{ author }</td>
