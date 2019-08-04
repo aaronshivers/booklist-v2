@@ -3,15 +3,17 @@ import { Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import BooksContext from '../context/books-context'
+import UserContext from '../context/user-context'
 import { deleteBook } from '../actions/books'
 
-const BookList = ({ isbn }) => {
-  const { state, dispatch } = useContext(BooksContext)
+const BookList = ({ id }) => {
+  const { dispatch } = useContext(BooksContext)
+  const { uid } = useContext(UserContext)
 
   return (
     <Button
       variant="danger"
-      onClick={ () => deleteBook(isbn)(state, dispatch) }
+      onClick={ () => deleteBook(id)(dispatch)(uid) }
     >
       <FontAwesomeIcon
         icon={ faTrashAlt }

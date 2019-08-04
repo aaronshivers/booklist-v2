@@ -1,11 +1,13 @@
-import { firebase } from '../db/firebase'
+import { firebase, googleAuthProvider } from '../db/firebase'
 
 const login = () => {
-  firebase.auth().signInAnonymously()
+  return firebase
+    .auth()
+    .signInWithPopup(googleAuthProvider)
 }
 
 const logout = () => {
-  firebase.auth().signOut()
+  return firebase.auth().signOut()
 }
 
 export {

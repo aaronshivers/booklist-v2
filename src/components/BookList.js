@@ -1,15 +1,17 @@
 import React, { useEffect, useContext } from 'react'
 import { Table } from 'react-bootstrap'
 import BooksContext from '../context/books-context'
+import UserContext from '../context/user-context'
 import DeleteButton from './DeleteButton'
+import { getBooks } from '../actions/books'
 
 const BookList = () => {
   const { state, dispatch } = useContext(BooksContext)
+  const { uid } = useContext(UserContext)
 
   // Populate books on page load
   useEffect(() => {
-    const books = JSON.parse(localStorage.getItem('booklist'))
-    if (books) dispatch({ type: 'POPULATE_BOOKS', books })
+    getBooks()(dispatch)(uid)
   }, [])
 
   return (
@@ -24,13 +26,13 @@ const BookList = () => {
       </thead>
       <tbody>
         {
-          state && state.map(({ title, author, isbn }) => (
-            <tr key={ isbn }>
+          state && state.map(({ id, title, author, isbn }) => (
+            <tr key={ id }>
               <td className="align-middle">{ title }</td>
               <td className="align-middle">{ author }</td>
               <td className="align-middle">{ isbn }</td>
               <td>
-                <DeleteButton isbn={ isbn } />
+                <DeleteButton id={ id } />
               </td>
             </tr>
           ))

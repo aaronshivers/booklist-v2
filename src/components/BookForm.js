@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import BooksContext from '../context/books-context'
+import UserContext from '../context/user-context'
 import { addBook } from '../actions/books'
 
 const BookForm = () => {
   const { state, dispatch } = useContext(BooksContext)
+  const { uid } = useContext(UserContext)
   const [ validated, setValidated ] = useState(false)
   const [ title, setTitle ] = useState('')
   const [ author, setAuthor ] = useState('')
@@ -17,7 +19,7 @@ const BookForm = () => {
     if (form.checkValidity() === false) {
       event.stopPropagation()
     } else if (title !== '' && author !== '' && isbn !== '') {
-      addBook({ title, author, isbn })(state, dispatch)
+      addBook({ title, author, isbn })(dispatch)(uid)
     }
 
     setValidated(true)
