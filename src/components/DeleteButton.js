@@ -5,10 +5,17 @@ import BooksContext from '../context/books-context'
 const BookList = ({ isbn }) => {
   const { state, dispatch } = useContext(BooksContext)
 
+  const deleteBook = () => {
+    const books = state.filter(book => book.isbn !== isbn)
+    console.log(books)
+
+    dispatch({ type: 'DELETE_BOOK', books })
+  }
+
   return (
     <Button
       variant="danger"
-      onClick={ () => dispatch({ type: 'DELETE_BOOK', isbn }) }
+      onClick={ deleteBook }
     >X</Button>
   )
 }

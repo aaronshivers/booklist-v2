@@ -1,11 +1,9 @@
 export default (state, action) => {
   switch (action.type) {
     case 'ADD_BOOK':
-      const updatedBooks = [ ...state, action.book ]
-      localStorage.setItem('booklist', JSON.stringify(updatedBooks))
-      return updatedBooks
+      return action.books
     case 'DELETE_BOOK':
-      return state.filter(({ isbn }) => isbn !== action.isbn)
+      return action.books
     case 'POPULATE_BOOKS':
       return action.books
     default:
