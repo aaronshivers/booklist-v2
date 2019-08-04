@@ -6,12 +6,6 @@ import Header from './Header'
 import BookForm from './BookForm'
 import BookList from './BookList'
 
-const initialState = [{
-  title: 'Book Title',
-  author: 'Author Name',
-  isbn: '12341234'
-}]
-
 const App = () => {
   const [ state, dispatch ] = useReducer(booksReducer, [])
 
