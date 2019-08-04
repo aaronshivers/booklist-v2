@@ -1,17 +1,7 @@
-// import { useContext } from 'react'
-// import BookContext from '../context/books-context'
-
-
-const addBook = ({ ...book }) => (dispatch, state) => {
-  // const { state } = useContext(BookContext)
-  // console.log(book)
-  const books = [ state, book ]
-console.log(books)
-console.log(dispatch, state)
-//   localStorage
-//     .setItem('booklist', books)
-
-dispatch({ type: 'ADD_BOOK', book: { title, author, isbn } })
+const addBook = ({ ...book }) => (state, dispatch) => {
+  const books = [...state, book]
+  localStorage.setItem('booklist', JSON.stringify(books))
+  dispatch({ type: 'ADD_BOOK', books })
 }
 
 const deleteBook = isbn => (state, dispatch) => {

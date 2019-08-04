@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import BooksContext from '../context/books-context'
+import { addBook } from '../actions/books'
 
 const BookForm = () => {
   const { state, dispatch } = useContext(BooksContext)
@@ -9,7 +10,7 @@ const BookForm = () => {
   const [ author, setAuthor ] = useState('')
   const [ isbn, setISBN ] = useState('')
 
-  const addBook = () => {
+  const handleFormSubmit = () => {
     const form = event.currentTarget
     event.preventDefault()
 
@@ -17,9 +18,10 @@ const BookForm = () => {
       event.stopPropagation()
     } else if (title !== '' && author !== '' && isbn !== '') {
       const book = { title, author, isbn }
-      const books = [ ...state, book ]
-      localStorage.setItem('booklist', JSON.stringify(books))
-      dispatch({ type: 'ADD_BOOK', books })
+      // const books = [ ...state, book ]
+      // localStorage.setItem('booklist', JSON.stringify(books))
+      // dispatch({ type: 'ADD_BOOK', books })
+      addBook(book)(state, dispatch)
     }
 
     setValidated(true)
@@ -34,7 +36,7 @@ const BookForm = () => {
   }, [state])
 
   return (
-    <Form noValidate validated={ validated } onSubmit={ addBook }>
+    <Form noValidate validated={ validated } onSubmit={ handleFormSubmit }>
       <Form.Group controlId="title">
         <Form.Label>Title</Form.Label>
         <Form.Control
