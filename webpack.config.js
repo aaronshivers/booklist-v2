@@ -41,7 +41,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'styles.css'
+      filename: '[name].css',
+      chunkFilemane: '[id].css'
     })
   ],
   devtool: 'inline-source-map',
