@@ -17,11 +17,7 @@ const BookForm = () => {
     if (form.checkValidity() === false) {
       event.stopPropagation()
     } else if (title !== '' && author !== '' && isbn !== '') {
-      const book = { title, author, isbn }
-      // const books = [ ...state, book ]
-      // localStorage.setItem('booklist', JSON.stringify(books))
-      // dispatch({ type: 'ADD_BOOK', books })
-      addBook(book)(state, dispatch)
+      addBook({ title, author, isbn })(state, dispatch)
     }
 
     setValidated(true)
