@@ -20,9 +20,9 @@ const BookList = () => {
         {
           state.map(({ title, author, isbn }) => (
             <tr key={ isbn }>
-              <td>{ title }</td>
-              <td>{ author }</td>
-              <td>{ isbn }</td>
+              <td className="align-middle">{ title }</td>
+              <td className="align-middle">{ author }</td>
+              <td className="align-middle">{ isbn }</td>
               <td>
                 <DeleteButton isbn={ isbn } />
               </td>
