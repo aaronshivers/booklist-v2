@@ -1,4 +1,5 @@
 const path = require('path')
+const Dotenv = require('dotenv-webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
@@ -43,7 +44,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilemane: '[id].css'
-    })
+    }),
+    new Dotenv()
   ],
   devtool: 'inline-source-map',
   devServer: {
