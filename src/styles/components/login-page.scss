@@ -1,5 +1,5 @@
 .center-vertically {
   position: absolute;
   top: 50vh;
-  bottom: 50vh;
+  transform: translateY(-50%);
 }

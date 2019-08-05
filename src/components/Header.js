@@ -4,10 +4,10 @@ import { faBook } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => (
   <>
-    <h1 className="display-4 text-center">
-      <FontAwesomeIcon icon={ faBook } className="text-warning" />
+    <h2 className="text-center">
+      <FontAwesomeIcon icon={ faBook } className="mr-1 text-warning" />
       MyBookList
-    </h1>
+    </h2>
   </>
 )
 
