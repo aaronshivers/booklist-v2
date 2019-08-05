@@ -12,7 +12,7 @@ const LoginLogoutButton = uid => {
 
   return (
     <Button
-      variant="warning"
+      variant={ loggedIn ? "outline-warning" : "warning" }
       onClick={ loggedIn ? logout : login }
     >
       {

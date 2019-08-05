@@ -15,7 +15,7 @@ const BookList = () => {
   }, [])
 
   return (
-    <Table striped hover className="mt-5">
+    <Table striped hover className="mt-3">
       <thead className="table-secondary">
         <tr>
           <th>Title</th>
@@ -28,9 +28,9 @@ const BookList = () => {
         {
           state && state.map(({ id, title, author, isbn }) => (
             <tr key={ id }>
-              <td className="align-middle">{ title }</td>
-              <td className="align-middle">{ author }</td>
-              <td className="align-middle">{ isbn }</td>
+              <td className="text-break align-middle">{ title }</td>
+              <td className="text-break align-middle">{ author }</td>
+              <td className="text-break align-middle">{ isbn }</td>
               <td>
                 <DeleteButton id={ id } />
               </td>
