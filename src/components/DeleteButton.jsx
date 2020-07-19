@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import Proptypes from 'prop-types';
 import BooksContext from '../context/books-context';
 import UserContext from '../context/user-context';
 import { deleteBook } from '../actions/books';
 
-const BookList = ({ id }) => {
+const DeleteButton = ({ id }) => {
   const { dispatch } = useContext(BooksContext);
   const { uid } = useContext(UserContext);
 
@@ -23,4 +24,8 @@ const BookList = ({ id }) => {
   );
 };
 
-export default BookList;
+DeleteButton.propTypes = {
+  id: Proptypes.string.isRequired,
+};
+
+export default DeleteButton;

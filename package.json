@@ -10,7 +10,7 @@
     "dev-server": "webpack-dev-server",
     "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint \"./src/**/*.js$x\""
+    "lint": "eslint --ext .jsx,.js src/"
   },
   "keywords": [],
   "author": "aaron shivers",
@@ -21,8 +21,6 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
-    "@fortawesome/free-solid-svg-icons": "^5.10.1",
-    "@fortawesome/react-fontawesome": "^0.1.4",
     "babel-loader": "^8.0.6",
     "bootstrap": "^4.3.1",
     "css-loader": "^3.1.0",
@@ -35,9 +33,6 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
-    "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.10",
-    "react-dom": "^16.8.6",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^2.1.0",
@@ -46,6 +41,12 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
-    "firebase": "^6.3.4"
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "firebase": "^6.3.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.2.2",
+    "react-dom": "^16.13.1"
   }
 }

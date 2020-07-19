@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Button } from 'react-bootstrap';
-import UserContext from '../context/user-context';
+import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { login, logout } from '../actions/auth';
 
 const LoginLogoutButton = (uid) => {

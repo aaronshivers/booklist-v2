@@ -1,35 +1,35 @@
-const path = require('path')
-const Dotenv = require('dotenv-webpack')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: ['./src/app.js'],
+  entry: ['./src/index.jsx'],
   output: {
-    path: path.join(__dirname, 'public', 'dist')
+    path: path.join(__dirname, 'public', 'dist'),
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader:'babel-loader'
+        loader: 'babel-loader',
       }, {
         test: /\.s?css$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
           }, {
             loader: 'css-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           }, {
             loader: 'sass-loader',
             options: {
-              sourceMap: true
-            }
-          }
-        ]
+              sourceMap: true,
+            },
+          },
+        ],
       }, {
         test: /\.(png|jpg|gif)$/i,
         use: [
@@ -37,20 +37,23 @@ module.exports = {
             loader: 'url-loader',
           },
         ],
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilemane: '[id].css'
+      chunkFilemane: '[id].css',
     }),
-    new Dotenv()
+    new Dotenv(),
   ],
   devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true,
-    publicPath: '/dist/'
-  }
-}
+    publicPath: '/dist/',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+};

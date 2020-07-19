@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer } from 'react';
 import { Container } from 'react-bootstrap';
 import BooksContext from '../context/books-context';
 import booksReducer from '../reducers/books';
@@ -7,7 +7,7 @@ import BookForm from './BookForm';
 import BookList from './BookList';
 
 const App = () => {
-  const [state, dispatch] = useReducer(booksReducer, []);
+  const [state, dispatch] = useReducer(booksReducer, [], undefined);
 
   return (
     <BooksContext.Provider value={{ state, dispatch }}>

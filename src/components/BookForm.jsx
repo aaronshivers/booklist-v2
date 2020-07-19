@@ -12,7 +12,7 @@ const BookForm = () => {
   const [author, setAuthor] = useState('');
   const [isbn, setISBN] = useState('');
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
 
@@ -55,7 +55,7 @@ const BookForm = () => {
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
-        <Form.Control.Feedback type="invalid">Please enter the author's name.</Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">Please enter the author&apos;s name.</Form.Control.Feedback>
       </Form.Group>
       <Form.Group controlId="isbn">
         <Form.Label>ISBN #</Form.Label>

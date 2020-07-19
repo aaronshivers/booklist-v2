@@ -2,9 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import { firebase } from './db/firebase';
 import UserContext from './context/user-context';
-import App from './components/App';
-import LoginPage from './components/LoginPage';
 import './styles/styles.scss';
+import LoginPage from './components/LoginPage';
+import App from './components/App';
 
 firebase.auth().onAuthStateChanged((user) => {
   const jsx = !user
