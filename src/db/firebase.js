@@ -2,10 +2,6 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
-if (process.env.NODE_ENV === 'production') {
-  require('dotenv').config();
-}
-
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -14,8 +10,7 @@ const firebaseConfig = {
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.FIREBASE_APP_ID,
 };
-console.log(process.env);
-console.log(process.env.FIREBASE_DATABASE_URL);
+
 firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
