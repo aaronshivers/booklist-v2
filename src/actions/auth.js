@@ -1,16 +1,12 @@
-import { firebase, googleAuthProvider } from '../db/firebase'
+import { firebase, googleAuthProvider } from '../db/firebase';
 
-const login = () => {
-  return firebase
-    .auth()
-    .signInWithPopup(googleAuthProvider)
-}
+const login = () => firebase
+  .auth()
+  .signInWithPopup(googleAuthProvider);
 
-const logout = () => {
-  return firebase.auth().signOut()
-}
+const logout = () => firebase.auth().signOut();
 
 export {
   login,
-  logout
-}
+  logout,
+};

@@ -1,59 +1,54 @@
-import database from '../db/firebase'
+import database from '../db/firebase';
 
-const addBook = bookData => dispatch => uid => {
-
-  const { title, author, isbn } = bookData
+const addBook = (bookData) => (dispatch) => (uid) => {
+  const { title, author, isbn } = bookData;
 
   const book = {
     title,
     author,
     isbn,
-    createdAt: Date.now()
-  }
+    createdAt: Date.now(),
+  };
 
   return database
-    .ref(`users/${ uid }/books`)
+    .ref(`users/${uid}/books`)
     .push(book)
     .then(
-      ref => dispatch({
-        type: 'ADD_BOOK', book: {
+      (ref) => dispatch({
+        type: 'ADD_BOOK',
+        book: {
           id: ref.key,
-          ...book
-        }
-      })
-    )
-}
+          ...book,
+        },
+      }),
+    );
+};
 
-const deleteBook = id => dispatch => uid => {
-  return database
-    .ref(`users/${ uid }/books/${ id }`)
-    .remove()
-    .then(() => dispatch({ type: 'DELETE_BOOK', id }))
-}
+const deleteBook = (id) => (dispatch) => (uid) => database
+  .ref(`users/${uid}/books/${id}`)
+  .remove()
+  .then(() => dispatch({ type: 'DELETE_BOOK', id }));
 
-const getBooks = () => dispatch => uid => {
+const getBooks = () => (dispatch) => (uid) => database
+  .ref(`users/${uid}/books`)
+  .once('value')
+  .then((snapshot) => {
+    const books = [];
 
-  return database
-    .ref(`users/${ uid }/books`)
-    .once('value')
-    .then(snapshot => {
-      const books = []
+    snapshot.forEach((childSnapshot) => {
+      books.push({
+        id: childSnapshot.key,
+        ...childSnapshot.val(),
+      });
+    });
 
-      snapshot.forEach(childSnapshot => {
-        books.push({
-          id: childSnapshot.key,
-          ...childSnapshot.val()
-        })
-      })
-
-      return books
-    }).then(
-      books => dispatch({ type: 'POPULATE_BOOKS', books })
-    )
-}
+    return books;
+  }).then(
+    (books) => dispatch({ type: 'POPULATE_BOOKS', books }),
+  );
 
 export {
   addBook,
   deleteBook,
-  getBooks
-}
+  getBooks,
+};
