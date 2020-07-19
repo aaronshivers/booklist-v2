@@ -2,6 +2,10 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/auth';
 
+if (process.env.NODE_ENV === 'production') {
+  require('dotenv').config();
+}
+
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
